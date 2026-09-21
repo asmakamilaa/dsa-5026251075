@@ -1,9 +1,9 @@
 package CampusPrintingService;
 abstract public class PrintJob implements Chargeable{
-    private String id;
+    private String id; //di soal bersimbol (-) yang artinya private
     private int pages;
 
-    public PrintJob(String id, int pages){
+    protected PrintJob(String id, int pages){ //use protected karena use (#)
         if (pages <= 0) {
             throw new IllegalArgumentException("Number of pages must be greater than zero.");
         }
@@ -11,16 +11,16 @@ abstract public class PrintJob implements Chargeable{
         this.pages = pages;
     }
 
-    public String getId(){
+    public String getId(){ //getter
         return id;
     }
 
-    public int getPages(){
+    public int getPages(){ //getter
         return pages;
     }
     
-    @Override
-    public abstract int calculateCharge();
+    @Override //karena ada calculateCharge di interface Chargeable, maka harus di override
+    public abstract int calculateCharge(); //tidak perlu body karena abstract, akan di implement di subclass
    
     //overloading
     public int calculateCharge(int copies){

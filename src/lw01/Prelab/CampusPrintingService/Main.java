@@ -2,8 +2,8 @@
 //Prelab Case: Campus printing service
 
 package CampusPrintingService;
-import java.io.File;
 import java.io.FileNotFoundException;
+// import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,20 +12,26 @@ public class Main{
     public static void main(String[] args) throws FileNotFoundException {
         List<PrintJob> jobs = new ArrayList<>();
 
-        File file = new File("lw01/Prelab/jobs.txt");
+        Scanner scanner = new Scanner(
+            Main.class.getResourceAsStream("/lw01/Prelab/jobs.txt")
+        );
 
-        Scanner scanner = new Scanner(file);
+        // File file = new File("src/lw01/Prelab/CampusPrintingService/jobs.txt");
+        // Scanner scanner = new Scanner(file);
 
         while (scanner.hasNext()) {
             String type = scanner.next();
             String id = scanner.next();
             int pages = scanner.nextInt();
 
+            PrintJob job;
+
             if (type.equals("MONO")) {
-            jobs.add(new MonoPrint(id, pages));
-            } else if (type.equals("COLOUR")) {
-            jobs.add(new ColourPrint(id, pages));
-            }
+                job = new MonoPrint(id, pages);
+            } else {
+                job = new ColourPrint(id, pages);
+            } 
+            jobs.add(job);
         }
 
         scanner.close();

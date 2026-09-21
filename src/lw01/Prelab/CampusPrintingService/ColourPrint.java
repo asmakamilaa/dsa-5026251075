@@ -14,10 +14,16 @@ public class ColourPrint extends PrintJob{
     public int calculateCharge(){
         int pages = getPages();
 
-        int first10Charge = Math.min(pages, limit);
-        int extraPages = Math.max(pages - limit, 0);
+        // int first10Charge = Math.min(pages, limit);
+        // int extraPages = Math.max(pages - limit, 0);
 
-        return (first10Charge * first10Pages) + (extraPages * perPageBeyond10) + addPerCompleteCopy;
+        // return (first10Charge * first10Pages) + (extraPages * perPageBeyond10) + addPerCompleteCopy;
+
+        if (pages <= limit) {
+            return (pages * first10Pages) + addPerCompleteCopy;
+        } else {
+            return(10*first10Pages) + ((pages - limit) * perPageBeyond10) + addPerCompleteCopy;
+        }
     }
 
     @Override
