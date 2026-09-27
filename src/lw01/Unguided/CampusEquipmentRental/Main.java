@@ -1,4 +1,4 @@
-package lw01.Unguided;
+package lw01.Unguided.CampusEquipmentRental;
 //Module 01: Object-Oriented Programming
 //Assessed Lab Case: Campus Equipment Rental
 

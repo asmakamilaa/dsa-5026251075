@@ -1,4 +1,4 @@
-package lw01.Unguided;
+package lw01.Unguided.CampusEquipmentRental;
 
 abstract public class Rental implements Chargeable{
     private String id;

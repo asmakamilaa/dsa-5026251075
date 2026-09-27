@@ -1,4 +1,4 @@
-package lw01.Unguided;
+package lw01.Unguided.CampusEquipmentRental;
 
 public class ProjectorRental extends Rental {
 
