@@ -1,4 +1,3 @@
-package CampusPrintingService;
 abstract public class PrintJob implements Chargeable{
     private String id; //di soal bersimbol (-) yang artinya private
     private int pages;

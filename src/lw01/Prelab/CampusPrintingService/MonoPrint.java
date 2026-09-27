@@ -1,4 +1,3 @@
-package CampusPrintingService;
 public class MonoPrint extends PrintJob{
 
     int idrPerPage = 500;
