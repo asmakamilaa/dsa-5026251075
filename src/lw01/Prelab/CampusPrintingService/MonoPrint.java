@@ -1,3 +1,5 @@
+package lw01.Prelab.CampusPrintingService;
+
 public class MonoPrint extends PrintJob{
 
     int idrPerPage = 500;

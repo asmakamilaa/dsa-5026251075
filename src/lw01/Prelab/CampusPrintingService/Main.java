@@ -1,6 +1,8 @@
 //Module 01: Object-Oriented Programming
 //Prelab Case: Campus printing service
 
+package lw01.Prelab.CampusPrintingService;
+
 import java.io.FileNotFoundException;
 // import java.io.File;
 import java.util.ArrayList;

@@ -3,6 +3,7 @@ package lw01.Unguided;
 abstract public class Rental implements Chargeable{
     private String id;
     private int days;
+    //private int units;
 
     protected Rental(String id, int days){
         if (days <= 0) {

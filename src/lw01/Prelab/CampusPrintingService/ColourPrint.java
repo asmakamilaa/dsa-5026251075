@@ -1,3 +1,5 @@
+package lw01.Prelab.CampusPrintingService;
+
 public class ColourPrint extends PrintJob{
 
     public ColourPrint(String id, int pages){
