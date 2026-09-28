@@ -3,71 +3,122 @@ package lw02.Unguided.LibraryBookBorrowing;
 import java.util.*;
 
 public class Main{
-    publis static void main(String[] args){
-        Scanner input = new Scanner(Main.class.getResourceAsStream("borrowing.txt"));
+    public static void main(String[] args){
+        Scanner input = new Scanner(Main.class.getResourceAsStream("/lw02/Unguided/borrowing.txt"));
+
         LinkedList<String[]> borrowingRequests = new LinkedList<>();
         LinkedList<String[]> bookRecords = new LinkedList<>();
         LinkedList<String[]> memberRecords = new LinkedList<>();
         Queue<String[]> queue = new LinkedList<>();
-        Stack<String[]> failedTransactions = new Stack<>();
+        Stack<String[]> failedRequests = new Stack<>();
+        LinkedList<String[]> successfulRequests = new LinkedList<>();
 
+        final int MAX_BORROW = 2;
+
+        //Menyimpan data buku dan stok awal
+        bookRecords.add(new String[]{"Kalkulus", "2"});
+        bookRecords.add(new String[]{"Fisika", "1"});
+        bookRecords.add(new String[]{"Statistika", "2"});
+
+        //Membaca data awal
         while(input.hasNext()){
-             String[] borrowingRequests = new String[2];
-             borrowingRequests[0] = input.next();
-             borrowingRequests[1] = input.next();
-             borrowingRequests.add(borrowingRequests);
+             String[] data = new String[2];
+
+             data[0] = input.next();
+             data[1] = input.next();
+
+             borrowingRequests.add(data);
         }
 
         input.close();
 
-        queue.addAll(borrowingRequests);
+        //Membuat daftar member
+        for(String[] request : borrowingRequests){
+            String name = request[0];
+            String[] member = null;
 
-        while(!queue.isEmpty()){
-            String[] borrowingRequests = queue.poll();    //Poll=ambil elemen terdepan dari sebuah queu
-            String name = borrowingRequests[0];
-            String title = borrowingRequests[0];
-
-            String[] memberRecords = null;
-            for(String[] data:memberRecords){
+            for(String[] data : memberRecords){
                 if(data[0].equals(name)){
-                    memberRecords = data;
+                    member = data;
                     break;
                 }
             }
-            //kalau blm pernah
-            if(memberRecords == null){
-                memberRecords = new String[]{name, "0"};
-                memberRecords.add(memberRecords);
-            }
 
-            String[] bookRecords = queue.poll();   //Poll=ambil elemen terdepan dari sebuah queu
-            String Kalkulus = 2;
-            String Fisika = 1;
-            String Statistika = 1;
-
-            if(bookRecords[].equals(title) && memberRecords <= 2)){
+            if(member == null){
+                member = new String[]{name, "0"};
+                memberRecords.add(member);
             }
         }
 
-        System.out.println(\n "=== Successfully Processed Requests ===");
+        //Memindahkan request dari LinkedList ke Queue
+        while(!borrowingRequests.isEmpty()){
+            String[] request = borrowingRequests.removeFirst();
 
-        for(String[] memberRecords : memberRecords){
-            System.out.println(borrowingRequests[0] + " : " + borrowingRequests[1]);
+            queue.add(request);
+
         }
 
-        System.out.println(\n "=== Remaining Book Stock ===");
+        //Memproses request dari Queue
+        while (!queue.isEmpty()) {
+            String[] request = queue.poll();
 
-        for(String[] bookRecords : bookRecords){
-            System.out.println("Kalkulus : " + );
-            System.out.println("Fisika : " + );
-            System.out.println("Statistika : " + );
+            String name = request[0];
+            String bookTitle = request[1];
+
+            String[] book = null;
+            String[] member = null;
+
+            //Searching for books
+            for(String[] data : bookRecords){
+                if(data[0].equals(bookTitle)){
+                    book = data;
+                    break;
+                }
+            }
+
+            //Searc member
+            for(String[] data : memberRecords){
+                if(data[0].equals(name)){
+                    member = data;
+                    break;
+                }
+            }
+
+            int stock = Integer.parseInt(book[1]);
+            int borrowed = Integer.parseInt(member[1]);
+
+            //Mengecek apakah req berhasil
+            if(stock>0 && borrowed < MAX_BORROW){
+                stock--;
+                borrowed++;
+
+                book[1] = String.valueOf(stock);
+                member[1] = String.valueOf(borrowed);
+
+                successfulRequests.add(request);
+            } else{
+                failedRequests.push(request);
+            }
         }
 
-        System.out.println(\n  "=== Failed Requests ===");
+        //Output
+        System.out.println("\n === Successfully Processed Requests ===");
 
-        while(!failedTransactions.isEmpty()){
-            String[] borrowingRequests = failed.pop();
-            System.out.println(borrowingRequests[0] + " " + borrowingRequests[1]);
+        for(String[] request : successfulRequests){
+            System.out.println(request[0] + " : " + request[1]);
+        }
+
+        System.out.println("\n === Remaining Book Stock ===");
+
+        for(String[] book : bookRecords){
+            System.out.println(book[0] + " : " + book[1]);
+        }
+
+        System.out.println("\n === Failed Requests ===");
+
+        while(!failedRequests.isEmpty()){
+            String[] request  = failedRequests.pop();
+            System.out.println(request[0] + " " + request[1]);
         }
 
     } 

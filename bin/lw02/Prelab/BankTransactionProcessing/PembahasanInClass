@@ -1,33 +1,45 @@
 
+// package lw02.Prelab.BankTransactionProcessing;
 // import java.util.*;
 
 // public class Main{
 //     public static void main(String[] args){
-//         Scanner sc = new Scanner(Main.class.getResourceAsStream("src/lw02/Prelab/transactions.txt"));
-//         LinkedList<String[]> transaction = new LinkedList<>();
-//         LinkedList<String[]> customer = new LinkedList<>();
-//         Queue<String[]> queue = new LinkedList<>();
+
+//         Scanner sc = new Scanner(Main.class.getResourceAsStream("/lw02/Prelab/transactions.txt"));
+
+//         LinkedList<String[]> transactions = new LinkedList<>();
+//         LinkedList<String[]> customers = new LinkedList<>();
+//         Queue<String[]> transactionQueue = new LinkedList<>();
 //         Stack<String[]> failedTransactions = new Stack<>();
 
 //         while(sc.hasNext()){
-//             String[] transaction = new String[3];
-//             transaction[0] = scanner.next();
-//             transaction[1] = scanner.next();
-//             transaction[2] = scanner.next();
-//             transaction.add(transaction);
+//             String[] data = new String[3];
+//             data[0] = sc.next();
+//             data[1] = sc.next();
+//             data[2] = sc.next();
+//             transactions.add(data);
 //         }
 
 //         sc.close();
+        
+//         //Memindahkan transaksi dari LinkedList ke Queue
+//         while(!transactions.isEmpty()){
+//             String[] data = transactions.removeFirst();
+//             transactionQueue.add(data);
+//         }
 
-//         queue.addAll(transaction);
+//         //Memproses transaksi dari Queue
+//         while(!transactionQueue.isEmpty()){
 
-//         while(!queue.isEmpty()){
-//             String[] transaction = queue.poll();    //Poll=ambil elemen terdepan dari sebuah queu
+//             String[] transaction = transactionQueue.poll();    //Poll=ambil elemen terdepan dari sebuah queu
+            
 //             String name = transaction[0];
-//             String type = transaction[0];
-//             String amount = Integer.parseInt(transaction[2]);
+//             String type = transaction[1];
+//             int amount = Integer.parseInt(transaction[2]);
+
 //             String[] customer = null;
-//             for(String[] data:customer){
+
+//             for(String[] data:customers){
 //                 if(data[0].equals(name)){
 //                     customer = data;
 //                     break;
@@ -39,17 +51,18 @@
 //                 customer = new String[]{name, "0"};
 //                 customers.add(customer);
 //             }
+
 //             int balance = Integer.parseInt(customer[1]);
 
 //             if(type.equals("DEPOSIT")){
 //                 balance += amount;
-//                 customer[1] = String valueOf(balance);
+//                 customer[1] = String.valueOf(balance);
 //             } else if (type.equals("WITHDRAW")){
 //                 if (amount <= balance){
 //                     balance -= amount;
 //                     customer[1] = String.valueOf(balance);
 //                 } else {
-//                     failed.push(transaction);
+//                     failedTransactions.push(transaction);
 //                 }
 //             }
 //         }
@@ -57,17 +70,17 @@
 //         //output
 //         System.out.println("\n === Final Balances ===");
 
-//         for(String[] customer : customer){
-//             System.out.println(customer[0] + " : " + customer[1]);
+//         for(String[] data : customers){
+//             System.out.println(data[0] + " : " + data[1]);
 //         }
 
 //         System.out.println("\n === Failed Transactions ===");
 
-//         while(!failed.isEmpty()){
-//             String[] transaction = failed.pop();
+//         while(!failedTransactions.isEmpty()){
+//             String[] transaction = failedTransactions.pop();
 //             System.out.println(transaction[0] + " " + transaction[1] + " " + transaction[2]);
 //         }
 
 //     }
 // }
-// }
+
