@@ -3,7 +3,6 @@
 ## Labwork 04 – Sorting and Searching
 
 **Language:** Java  
-**Type:** Unguided Lab (Simulation)  
 **Mode:** Individual Practical Work
 
 ---
@@ -90,7 +89,7 @@ Your program must follow these requirements:
 
 ---
 
-### C. Unguided Tasks
+### C. Tasks
 
 #### A1. Implementation and Demonstration
 
@@ -214,4 +213,4 @@ The array is not completely sorted because the program stops immediately after t
 
 ---
 
-*This is a practice simulation based on the Pre-lab 4 learning materials. It is not an official Unguided Lab question.*
+*This is a practice simulation based on the Pre-lab 4 learning materials. It is not an official question.*
