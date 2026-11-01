@@ -4,6 +4,7 @@
 
 **Language:** Java  
 **Mode:** Individual Practical Work
+**AI Tools:** ChatGPT
 
 ---
 
