@@ -3,7 +3,7 @@
 ## Labwork 04 – Sorting and Searching
 
 **Language:** Java  
-**Mode:** Individual Practical Work
+**Mode:** Individual Practical Work  
 **AI Tools:** ChatGPT
 
 ---
