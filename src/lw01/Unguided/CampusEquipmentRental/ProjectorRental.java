@@ -1,14 +1,14 @@
 package lw01.Unguided.CampusEquipmentRental;
 
 public class ProjectorRental extends Rental {
-
+    
     int limit = 3;
-    int first3Day = 60000;
-    int beyond3Days = 45000;
+    int first3DaysCharge = 60000;
+    int beyond3DaysCharge = 45000;
     int addSetupCharge = 20000;
-
-    public ProjectorRental(String id, int days){
-        super(id, days);
+    
+    public ProjectorRental(String id, int days, int units){
+        super(id, days, units);
     }
 
     @Override
@@ -16,9 +16,9 @@ public class ProjectorRental extends Rental {
         int days = getDays();
 
         if (days <= limit) {
-            return ((days * first3Day) + addSetupCharge);
+            return days*first3DaysCharge + addSetupCharge;
         } else {
-            return((3*first3Day) + (units*beyond3Days) + addSetupCharge);
+            return (limit*first3DaysCharge) + ((days-limit)*beyond3DaysCharge) + addSetupCharge;
         }
     }
 

@@ -3,20 +3,18 @@ package lw01.Unguided.CampusEquipmentRental;
 //Assessed Lab Case: Campus Equipment Rental
 
 import java.io.FileNotFoundException;
-// import java.io.File;
-import java.util.Array;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main{
     public static void main(String[] args) throws FileNotFoundException {
-        Rental[] rentals = new Rental[100];
 
         Scanner scanner = new Scanner(
             Main.class.getResourceAsStream("/lw01/Unguided/rentals.txt")
         );
 
         int t = scanner.nextInt();
+
+        Rental[] rentals = new Rental[t];
 
         for (int i = 0; i < t; i++) {
             String type = scanner.next();
@@ -27,11 +25,15 @@ public class Main{
             Rental rental;
 
             if (type.equals("PROJECTOR")) {
-                rental = new ProjectorRental(id, days);
+                rental = new ProjectorRental(id, days, units);
+            } else if (type.equals("LAPTOP")) {
+                rental = new LaptopRental(id, days, units);
             } else {
-                rental = new LaptopRental(id, days);
-            } 
+                throw new IllegalArgumentException("Invalid rental type: " + type);
+            }
+
             rentals[i] = rental;
+            
         }
 
         scanner.close();

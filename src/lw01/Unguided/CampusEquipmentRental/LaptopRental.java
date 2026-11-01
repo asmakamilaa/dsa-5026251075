@@ -5,13 +5,13 @@ public class LaptopRental extends Rental {
     int idrPerDay = 40000;
     int addChargeEachUnit = 10000;
     
-    public LaptopRental(String id, int days){
-        super(id, days);
+    public LaptopRental(String id, int days, int units){
+        super(id, days, units);
     }
 
     @Override
     public int calculateCharge(){
-        return ((getDays() * idrPerDay) + addChargeEachUnit) * units;
+        return (getDays() * idrPerDay) + addChargeEachUnit;
     }
 
     @Override
